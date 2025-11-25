@@ -654,7 +654,7 @@ $usuario_id = $_SESSION["usuario_id"] ?? null;
     const itemsImg = trackImg.children;
     const totalItemsImg = itemsImg.length;
 
-    // Clona y añade los elementos de la galería de imágenes porfin funciono esta vaina jvg
+    // Clona y añade los elementos de la galería de imágenes porfin funciono esta vaina jvg DE NUEVO HAREMOS QE JALE  ESTA COSA YA ME QUIERO DORMIR 
     for (let i = 0; i < totalItemsImg; i++) {
         const clone = itemsImg[i].cloneNode(true);
         trackImg.appendChild(clone);
