@@ -1,36 +1,68 @@
-const btnRegistro = document.getElementById('btn-registrate');
-const modalRegistro = document.getElementById('registroModal');
-const cerrarRegistro = document.getElementById('cerrarModal');
-const formRegistro = document.getElementById('form-registro');
+// ===============================
+//  REGISTRO
+// ===============================
 
-btnRegistro.addEventListener('click', e => {
-  e.preventDefault();
-  modalRegistro.classList.remove('hidden');
-  document.body.classList.add('blurred');
+const formRegistro = document.getElementById("form-registro");
+const modal = document.getElementById("registroModal");
+const cerrarBtn = document.getElementById("cerrarModal");
+const mensaje = document.getElementById("mensaje");
+
+// --- REGISTRO ---
+
+formRegistro.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    let datos = new FormData(formRegistro);
+
+    fetch("registro.php", {
+        method: "POST",
+        body: datos
+    })
+    .then(res => res.text())
+    .then(resp => {
+
+        if (resp === "ok") {
+            modal.classList.add("hidden");
+            mostrarRegistroExitoso();
+            formRegistro.reset();
+        }
+        else if (resp === "existe") {
+            alert(" Este correo ya está registrado");
+        }
+        else {
+            alert(" Ocurrió un error al registrar.");
+        }
+    });
 });
 
-cerrarRegistro.addEventListener('click', () => {
-  modalRegistro.classList.add('hidden');
-  document.body.classList.remove('blurred');
-});
+// --- ALERT PERSONALIZADO ---
 
-modalRegistro.addEventListener('click', e => {
-  if (e.target === modalRegistro) {
-    modalRegistro.classList.add('hidden');
-    document.body.classList.remove('blurred');
-  }
-});
+function mostrarRegistroExitoso() {
+    const overlay = document.createElement("div");
+    overlay.className = "fixed inset-0 bg-black/60 backdrop-blur-sm flex justify-center items-center z-50";
 
-formRegistro.addEventListener('submit', e => {
-  e.preventDefault();
-  const nombreUsuario = document.getElementById('registro-nombre').value;
-  localStorage.setItem('usuarioRegistrado', 'true');
-  localStorage.setItem('nombreUsuario', nombreUsuario);
-  modalRegistro.classList.add('hidden');
-  document.body.classList.remove('blurred');
-  btnRegistro.classList.add('hidden');
-  document.getElementById('btn-login').classList.remove('hidden');
-});
+    overlay.innerHTML = `
+        <div class="bg-blue-600 text-white p-8 rounded-2xl shadow-xl w-[350px] text-center">
+            <h2 class="text-2xl font-bold mb-3">Registro Exitoso</h2>
+            <p class="mb-6">Tu cuenta ha sido creada.</p>
+
+            <div class="flex justify-center gap-4">
+                <button id="btnAceptar" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded">
+                    Aceptar
+                </button>
+
+                <button id="btnCerrar" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    document.getElementById("btnAceptar").onclick = () => overlay.remove();
+    document.getElementById("btnCerrar").onclick = () => overlay.remove();
+}
 
 const btnLoginAbrir = document.getElementById('btn-login');
 const modalLogin = document.getElementById('loginModal');
@@ -99,3 +131,4 @@ document.addEventListener('DOMContentLoaded', () => {
     userInfo.classList.add('hidden');
   }
 });
+
