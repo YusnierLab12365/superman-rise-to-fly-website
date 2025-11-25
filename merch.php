@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Superman: Merch Oficial</title>
+
+    <link rel="icon" type="image/png" href="assets/img/icono_superman.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* ==================================================== */
+        /* Estilos y Animación */
+        /* ==================================================== */
+        .text-superman-red {
+            color: #d1121d;
+        }
+
+        .bg-superman-red {
+            background-color: #d1121d;
+        }
+
+        .text-superman-yellow {
+            color: #ffde00;
+        }
+
+        .bg-superman-blue {
+            background-color: #007bff;
+        }
+
+        .font-bebas-neue {
+            font-family: 'Bebas Neue', cursive;
+        }
+
+        /* Fondo Animado */
+        body {
+            background-color: #001f4c;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .full-page-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .animated-gradient-bg {
+            width: 100%;
+            height: 100%;
+            background-size: 400% 400%;
+            background-image: linear-gradient(135deg, #001f4c, #0052a5, #d1121d, #ffde00);
+            animation: gradient-animation 15s ease infinite;
+        }
+
+        @keyframes gradient-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Hover y Anclas */
+        .product-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-anchor {
+            padding-top: 10rem;
+            margin-top: -6rem;
+            display: block;
+        }
+
+        /* Modal con Backdrop */
+        .modal-overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 90;
+        }
+       /* Centrar TODOS los grids de productos */
+.grid {
+    justify-items: center;  /* centra el contenido dentro de cada celda */
+}
+ 
+    </style>
+</head>
+
+<body class="bg-[#001f4c]">
+    <div class="full-page-bg">
+        <div class="absolute inset-0 bg-superman-blue opacity-50"></div>
+        <div class="animated-gradient-bg"></div>
+    </div>
+
+
+    <nav
+        class="nav-animation fixed top-0 left-0 w-full z-50 bg-[#001f4c] bg-opacity-90 backdrop-blur-sm shadow-lg py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="index.php"
+                class="text-xl md:text-2xl font-extrabold font-['Bebas_Neue'] tracking-widest 
+                text-white hover:text-superman-red transition-colors duration-300">
+                SUPERMAN: RISE TO FLY
+            </a>
+
+            <div class="hidden md:flex space-x-6">
+                <a href="#seccion-gear"
+                    class="text-lg font-bebas-neue tracking-widest text-superman-yellow hover:text-white transition-colors duration-300 border-b-2 border-transparent hover:border-superman-yellow">
+                    Productos Oficiales 
+                </a>
+                <a href="#seccion-stickers"
+                    class="text-lg font-bebas-neue tracking-widest text-superman-yellow hover:text-white transition-colors duration-300 border-b-2 border-transparent hover:border-superman-yellow">
+                    STICKERS
+                </a>
+                 <a href="#seccion-skins"
+                    class="text-lg font-bebas-neue tracking-widest text-superman-yellow hover:text-white transition-colors duration-300 border-b-2 border-transparent hover:border-superman-yellow">
+                    SKINS
+                </a>
+            </div>
+
+            <button id="open-cart-modal"
+                class="text-white hover:text-superman-yellow transition-colors duration-300 relative">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z">
+                    </path>
+                </svg>
+                <span id="cart-badge"
+                    class="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-red-100 transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full hidden">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <main id="store-content" class="relative z-10 pt-32 pb-16">
+        <div class="container mx-auto px-4">
+
+            <h1
+                class="text-6xl md:text-8xl font-bebas-neue tracking-widest text-center mb-16 text-white text-shadow-lg">
+                <span class="text-superman-yellow">MERCH</span> OFICIAL
+            </h1>
+
+            <section>
+                <a id="seccion-gear" class="section-anchor"></a>
+                <h2
+                    class="text-4xl md:text-5xl font-bebas-neue tracking-widest text-left mb-8 text-white border-b-2 border-superman-red pb-2">
+                    LOS MÁS <span class="text-superman-yellow">VENDIDO</span>
+                </h2>
+
+                <div class="flex justify-center">
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mb-16 max-w-7xl">
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-2xl overflow-hidden text-white flex flex-col relative z-20"
+                        data-id="playera" data-price="400.00">
+                        <div class="p-4 flex items-center justify-center bg-superman-blue h-48">  <!-- Cambié bg-[#001f4c] a bg-superman-blue -->
+                            <img src="assets/img/playera_superman.jpg" alt="Playera de Superman Azul"
+                                class="product-img w-full h-full object-contain rounded-lg shadow-xl">
+                        </div>
+
+                            <div class="p-4 flex flex-col justify-between flex-grow">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-1 font-bebas-neue tracking-wide">Playera Clásica
+                                    </h3>
+                                    <p class="text-gray-200 text-sm mb-3">Lleva el símbolo de la esperanza. Algodón premium.</p>
+                                    <div class="flex items-baseline mb-3">
+                                        <span
+                                            class="text-xl font-extrabold text-superman-yellow mr-2">$400.00</span>
+                                    </div>
+
+                                    <label for="playera-talla" class="text-sm block mb-1">Talla:</label>
+                                    <select id="playera-talla"
+                                        class="block w-full p-2 border border-gray-400 rounded-lg focus:ring-2 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-3 text-sm">
+                                        <option value="M" selected>Talla M</option>
+                                        <option value="L">Talla L</option>
+                                        <option value="XL">Talla XL</option>
+                                    </select>
+
+                                    <label for="playera-qty" class="text-sm block mb-1">Cantidad:</label>
+                                    <input type="number" id="playera-qty" value="1" min="1" max="99"
+                                        class="qty-input w-full p-2 border border-gray-400 rounded-lg focus:ring-2 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-4 text-sm text-center">
+                                </div>
+
+                                <button id="add-playera-to-cart"
+                                    class="w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-2 rounded-lg shadow-md transition-colors duration-300 flex items-center justify-center text-sm">
+                                    Añadir al Carrito
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-2xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="COMIC" data-price="250.00">
+                            <div class="p-4 flex items-center justify-center bg-superman-blue h-48">
+                                <img src="assets/img/comic14.jpg" alt="COMIC"
+                                    class="product-img w-full h-full object-contain rounded-lg shadow-xl">
+                            </div>
+                            <div class="p-4 flex flex-col justify-between flex-grow">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-1 font-bebas-neue tracking-wide">SUPERMAN: RISE TO FLY CÓMIC
+                                    </h3>
+                                    <p class="text-gray-200 text-sm mb-3"> Cómic Oficial Del Juego</p>
+                                    <div class="flex items-baseline mb-3">
+                                        <span class="text-xl font-extrabold text-superman-yellow">$100.00</span>
+                                    </div>
+                                    <label for="COMIC" class="text-sm block mb-1">Cantidad:</label>
+                                    <input type="number" id="COMIC" value="1" min="1" max="99"
+                                        class="qty-input w-full p-2 border border-gray-400 rounded-lg focus:ring-2 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-4 text-sm text-center">
+                                </div>
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-2 rounded-lg shadow-md transition-colors duration-300 text-sm">
+                                    Añadir al Carrito
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-2xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="VINILO" data-price="300.00">
+                            <div class="p-4 flex items-center justify-center bg-superman-blue h-48">
+                                <img src="assets/img/vinilo.jpg" alt="VINILO"
+                                    class="product-img w-full h-full object-contain rounded-lg shadow-xl">
+                            </div>
+                            <div class="p-4 flex flex-col justify-between flex-grow">
+                                <div>
+                                    <h3 class="text-2xl font-bold mb-1 font-bebas-neue tracking-wide">Vinilo Superman</h3>
+                                    <p class="text-gray-200 text-sm mb-3">Diseño vintage para los fans de la edad de oro.</p>
+                                    <div class="flex items-baseline mb-3">
+                                        <span class="text-xl font-extrabold text-superman-yellow">$300.00</span>
+                                    </div>
+                                    <label for="termo-retro-qty" class="text-sm block mb-1">Cantidad:</label>
+                                    <input type="number" id="termo-retro-qty" value="1" min="1" max="99"
+                                        class="qty-input w-full p-2 border border-gray-400 rounded-lg focus:ring-2 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-4 text-sm text-center">
+                                </div>
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-2 rounded-lg shadow-md transition-colors duration-300 text-sm">
+                                    Añadir al Carrito
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <a id="seccion-stickers" class="section-anchor"></a>
+                <h2
+                    class="text-4xl md:text-5xl font-bebas-neue tracking-widest text-left mb-8 text-white border-b-2 border-superman-yellow pb-2">
+                    COLECCIÓN DE <span class="text-superman-red">STICKERS</span>
+                </h2>
+
+                <div class="flex justify-center">
+                  
+                    <div
+                        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 max-w-7xl">
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="sticker-simbolo" data-price="70.00">
+                            <div class="p-3 flex items-center justify-center bg-superman-blue h-32">
+                                <img src="assets/img/icono_superman.png" alt="StickerSímboloClásico"
+                                    class="product-img w-full h-full object-contain rounded-md shadow-lg">
+                            </div>
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold font-bebas-neue tracking-wide leading-tight">Símbolo Clásico
+                                    </h4>
+                                    <p class="text-gray-200 text-xs">5 stickers</p>
+                                    <p class="text-sm text-superman-yellow font-bold mt-1 mb-2">$70.00</p>
+                                </div>
+                                <input type="number" value="1" min="1" max="99"
+                                    class="qty-input w-full p-1 border border-gray-400 rounded-lg focus:ring-1 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-2 text-xs text-center">
+
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-1.5 rounded-lg shadow-md transition-colors duration-300 text-xs">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="sticker-SUPERMAN" data-price="70.00">
+                            <div class="p-3 flex items-center justify-center bg-superman-blue h-32">
+                                <img src="assets/img/sticker_superman.jpg" alt="StickerSUPERMAN"
+                                    class="product-img w-full h-full object-contain rounded-md shadow-lg">
+                            </div>
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold font-bebas-neue tracking-wide leading-tight">SUPERMAN</h4>
+                                    <p class="text-gray-200 text-xs">5 stickers</p>
+                                    <p class="text-sm text-superman-yellow font-bold mt-1 mb-2">$70.00</p>
+                                </div>
+                                <input type="number" value="1" min="1" max="99"
+                                    class="qty-input w-full p-1 border border-gray-400 rounded-lg focus:ring-1 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-2 text-xs text-center">
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-1.5 rounded-lg shadow-md transition-colors duration-300 text-xs">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="sticker-LEXL" data-price="70.00">
+                            <div class="p-3 flex items-center justify-center bg-superman-blue h-32">
+                                <img src="assets/img/sticker_lexl.jpg" alt="StickerLEXL"
+                                    class="product-img w-full h-full object-contain rounded-md shadow-lg">
+                            </div>
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold font-bebas-neue tracking-wide leading-tight">LEX LUTHOR</h4>
+                                    <p class="text-gray-200 text-xs">5 stickers</p>
+                                    <p class="text-sm text-superman-yellow font-bold mt-1 mb-2">$70.00</p>
+                                </div>
+                                <input type="number" value="1" min="1" max="99"
+                                    class="qty-input w-full p-1 border border-gray-400 rounded-lg focus:ring-1 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-2 text-xs text-center">
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-1.5 rounded-lg shadow-md transition-colors duration-300 text-xs">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="sticker-RAPTOR" data-price="50.00">
+                            <div class="p-3 flex items-center justify-center bg-superman-blue h-32">
+                                <img src="assets/img/sticker_raptor.jpg" alt="StickerRAPTOR"
+                                    class="product-img w-full h-full object-contain rounded-md shadow-lg">
+                            </div>
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold font-bebas-neue tracking-wide leading-tight">RAPTOR</h4>
+                                    <p class="text-gray-200 text-xs">5 stickers</p>
+                                    <p class="text-sm text-superman-yellow font-bold mt-1 mb-2">$50.00</p>
+                                </div>
+                                <input type="number" value="1" min="1" max="99"
+                                    class="qty-input w-full p-1 border border-gray-400 rounded-lg focus:ring-1 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-2 text-xs text-center">
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-1.5 rounded-lg shadow-md transition-colors duration-300 text-xs">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="sticker-ULTRAMAN" data-price="50.00">
+                            <div class="p-3 flex items-center justify-center bg-superman-blue h-32">
+                                <img src="assets/img/sticker_ultraman.jpg" alt="StickerULTRAMAN"
+                                    class="product-img w-full h-full object-contain rounded-md shadow-lg">
+                            </div>
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold font-bebas-neue tracking-wide leading-tight">ULTRAMAN</h4>
+                                    <p class="text-gray-200 text-xs">5 stickers</p>
+                                    <p class="text-sm text-superman-yellow font-bold mt-1 mb-2">$50.00</p>
+                                </div>
+                                <input type="number" value="1" min="1" max="99"
+                                    class="qty-input w-full p-1 border border-gray-400 rounded-lg focus:ring-1 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-2 text-xs text-center">
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-1.5 rounded-lg shadow-md transition-colors duration-300 text-xs">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="sticker-KRYPTO" data-price="50.00">
+                            <div class="p-3 flex items-center justify-center bg-superman-blue h-32">
+                                <img src="assets/img/sticker_krypto.jpg" alt="StickerKRYPTO"
+                                    class="product-img w-full h-full object-contain rounded-md shadow-lg">
+                            </div>
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold font-bebas-neue tracking-wide leading-tight">KRYPTO
+                                    </h4>
+                                    <p class="text-gray-200 text-xs">5 stickers</p>
+                                    <p class="text-sm text-superman-yellow font-bold mt-1 mb-2">$50.00</p>
+                                </div>
+                                <input type="number" value="1" min="1" max="99"
+                                    class="qty-input w-full p-1 border border-gray-400 rounded-lg focus:ring-1 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-2 text-xs text-center">
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-1.5 rounded-lg shadow-md transition-colors duration-300 text-xs">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="sticker-KAIJU" data-price="50.00">
+                            <div class="p-3 flex items-center justify-center bg-superman-blue h-32">
+                                <img src="assets/img/sticker_kaiju.jpg" alt="StickerKAIJU"
+                                    class="product-img w-full h-full object-contain rounded-md shadow-lg">
+                            </div>
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold font-bebas-neue tracking-wide leading-tight">KAIJU
+                                    </h4>
+                                    <p class="text-gray-200 text-xs">5 stickers</p>
+                                    <p class="text-sm text-superman-yellow font-bold mt-1 mb-2">$50.00</p>
+                                </div>
+                                <input type="number" value="1" min="1" max="99"
+                                    class="qty-input w-full p-1 border border-gray-400 rounded-lg focus:ring-1 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-2 text-xs text-center">
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-1.5 rounded-lg shadow-md transition-colors duration-300 text-xs">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="sticker-SUPERKRYPTO" data-price="80.00">
+                            <div class="p-3 flex items-center justify-center bg-superman-blue h-32">
+                                <img src="assets/img/sticker_superkryp.jpg" alt="StickerSUPERKRYPTO"
+                                    class="product-img w-full h-full object-contain rounded-md shadow-lg">
+                            </div>
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold font-bebas-neue tracking-wide leading-tight">SUPERKRYPTO
+                                    </h4>
+                                    <p class="text-gray-200 text-xs">5 stickers</p>
+                                    <p class="text-sm text-superman-yellow font-bold mt-1 mb-2">$80.00</p>
+                                </div>
+                                <input type="number" value="1" min="1" max="99"
+                                    class="qty-input w-full p-1 border border-gray-400 rounded-lg focus:ring-1 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-2 text-xs text-center">
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-1.5 rounded-lg shadow-md transition-colors duration-300 text-xs">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col relative z-10"
+                            data-id="sticker-villano" data-price="80.00">
+                            <div class="p-3 flex items-center justify-center bg-superman-blue h-32">
+                                <img src="assets/img/sticker_villano.jpg" alt="StickerVILLANO"
+                                    class="product-img w-full h-full object-contain rounded-md shadow-lg">
+                            </div>
+                            <div class="p-3 text-center flex-grow flex flex-col justify-between">
+                                <div>
+                                    <h4 class="text-lg font-bold font-bebas-neue tracking-wide leading-tight">VILLANOS
+                                    </h4>
+                                    <p class="text-gray-200 text-xs">5 stickers</p>
+                                    <p class="text-sm text-superman-yellow font-bold mt-1 mb-2">$80.00</p>
+                                </div>
+                                <input type="number" value="1" min="1" max="99"
+                                    class="qty-input w-full p-1 border border-gray-400 rounded-lg focus:ring-1 focus:ring-superman-yellow text-gray-900 bg-gray-100 mb-2 text-xs text-center">
+                                <button
+                                    class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 text-white font-bold py-1.5 rounded-lg shadow-md transition-colors duration-300 text-xs">
+                                    Añadir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+    
+                 </div>
+                   <section>
+    <a id="seccion-skins" class="section-anchor"></a>
+    <h2
+        class="text-4xl md:text-5xl font-bebas-neue tracking-widest text-left mb-8 text-white border-b-2 border-superman-red pb-2">
+        COLECCIÓN DE <span class="text-superman-yellow">SKINS</span>
+    </h2>
+    <div class="flex justify-center">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+
+    <!-- SKIN 1: MAN OF STEEL -->
+<div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col"
+    data-id="skin_man_of_steel" data-price="180">
+    
+    <img src="assets/img/skin_1.jpg" class="w-full h-52 object-cover">
+
+    <div class="p-4 flex-grow flex flex-col justify-between text-center">
+        <div>
+            <h4 class="text-lg font-bold font-bebas-neue tracking-wide">Man of Steel</h4>
+            <p class="text-gray-200 text-xs">Skin cinematográfico edición MOS</p>
+            <p class="text-sm text-superman-yellow font-bold mt-1 mb-3">$180.00</p>
+        </div>
+          <button
+            class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 
+            text-white font-bold py-2 rounded-lg shadow-md transition-colors text-sm">
+            Añadir
+        </button>
+    </div>
+</div>
+
+
+<!-- SKIN 2: KINGDOM COME -->
+<div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col"
+    data-id="skin_kingdom_come" data-price="180">
+
+    <img src="assets/img/skin_2.jpg" class="w-full h-52 object-cover">
+
+    <div class="p-4 flex-grow flex flex-col justify-between text-center">
+        <div>
+            <h4 class="text-lg font-bold font-bebas-neue tracking-wide">Kingdom Come</h4>
+            <p class="text-gray-200 text-xs">Skin del universo Kingdom Come</p>
+            <p class="text-sm text-superman-yellow font-bold mt-1 mb-3">$180.00</p>
+        </div>
+        <button
+            class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 
+            text-white font-bold py-2 rounded-lg shadow-md transition-colors text-sm">
+            Añadir
+        </button>
+    </div>
+</div>
+
+
+<!-- SKIN 3: RED SON -->
+<div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col"
+    data-id="skin_red_son" data-price="180">
+
+    <img src="assets/img/skin_3.jpg" class="w-full h-52 object-cover">
+
+    <div class="p-4 flex-grow flex flex-col justify-between text-center">
+        <div>
+            <h4 class="text-lg font-bold font-bebas-neue tracking-wide">Red Son</h4>
+            <p class="text-gray-200 text-xs">Skin del Superman soviético</p>
+            <p class="text-sm text-superman-yellow font-bold mt-1 mb-3">$180.00</p>
+        </div>
+         <button
+            class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 
+            text-white font-bold py-2 rounded-lg shadow-md transition-colors text-sm">
+            Añadir
+        </button>
+    </div>
+</div>
+
+
+<!-- SKIN 4: MULTIVERSITY -->
+<div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col"
+    data-id="skin_multiversity" data-price="180">
+
+    <img src="assets/img/skin_4.jpg" class="w-full h-52 object-cover">
+
+    <div class="p-4 flex-grow flex flex-col justify-between text-center">
+        <div>
+            <h4 class="text-lg font-bold font-bebas-neue tracking-wide">Multiversity</h4>
+            <p class="text-gray-200 text-xs">Skin del multiverso de DC</p>
+            <p class="text-sm text-superman-yellow font-bold mt-1 mb-3">$180.00</p>
+        </div>
+        <button
+            class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 
+            text-white font-bold py-2 rounded-lg shadow-md transition-colors text-sm">
+            Añadir
+        </button>
+    </div>
+</div>
+
+
+<!-- SKIN 5: OVERMAN -->
+<div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col"
+    data-id="skin_overman" data-price="180">
+
+    <img src="assets/img/skin_5.jpg" class="w-full h-52 object-cover">
+
+    <div class="p-4 flex-grow flex flex-col justify-between text-center">
+        <div>
+            <h4 class="text-lg font-bold font-bebas-neue tracking-wide">Overman</h4>
+            <p class="text-gray-200 text-xs">Skin del Superman nazi de Tierra-10</p>
+            <p class="text-sm text-superman-yellow font-bold mt-1 mb-3">$180.00</p>
+        </div>
+        <button
+            class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 
+            text-white font-bold py-2 rounded-lg shadow-md transition-colors text-sm">
+            Añadir
+        </button>
+    </div>
+</div>
+
+
+<!-- SKIN 6: NEW 52 -->
+<div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col"
+    data-id="skin_new_52" data-price="180">
+
+    <img src="assets/img/skin_6.jpg" class="w-full h-52 object-cover">
+
+    <div class="p-4 flex-grow flex flex-col justify-between text-center">
+        <div>
+            <h4 class="text-lg font-bold font-bebas-neue tracking-wide">New 52</h4>
+            <p class="text-gray-200 text-xs">Skin del reboot New 52</p>
+            <p class="text-sm text-superman-yellow font-bold mt-1 mb-3">$180.00</p>
+        </div>
+           <button
+            class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 
+            text-white font-bold py-2 rounded-lg shadow-md transition-colors text-sm">
+            Añadir
+        </button>
+    </div>
+</div>
+
+
+<!-- SKIN 7: BLACK SUIT -->
+<div class="product-card bg-superman-red rounded-xl shadow-xl overflow-hidden text-white flex flex-col"
+    data-id="skin_black_suit" data-price="180">
+
+    <img src="assets/img/skin_7.jpg" class="w-full h-52 object-cover">
+
+    <div class="p-4 flex-grow flex flex-col justify-between text-center">
+        <div>
+            <h4 class="text-lg font-bold font-bebas-neue tracking-wide">Black Suit</h4>
+            <p class="text-gray-200 text-xs">Skin del traje negro</p>
+            <p class="text-sm text-superman-yellow font-bold mt-1 mb-3">$180.00</p>
+        </div>
+
+        <button
+            class="add-to-cart-simple w-full bg-superman-blue hover:bg-blue-600 
+            text-white font-bold py-2 rounded-lg shadow-md transition-colors text-sm">
+            Añadir
+        </button>
+    </div>
+</div>
+
+
+</div>
+
+    </div>
+                 </section>
+                   </center>
+                 <div class="pb-16"></div> </div>
+                 </main>
+                    <div id="checkout-modal" class="fixed inset-0 hidden items-center justify-center modal-overlay">
+                        <div class="rounded-xl shadow-2xl p-6 w-11/12 max-w-lg bg-[#001f4c] text-white relative z-[1000]">
+                            <h3 class="text-3xl font-bold mb-6 font-bebas-neue tracking-wider">Resumen de Carrito</h3>
+
+             <div id="cart-items-container" class="space-y-4 mb-6 max-h-80 overflow-y-auto pr-2">
+                </div>
+
+             <div class="text-right mt-6 border-t border-white border-opacity-30 pt-4">
+                <p class="text-xl">Total: <span class="font-bold text-superman-yellow" id="cart-total">$0.00</span></p>
+             </div>
+
+             <div class="flex justify-end space-x-4 mt-6">
+                <button id="close-checkout-modal"
+                    class="py-2 px-4 rounded hover:bg-white hover:text-gray-900 transition duration-150">Cerrar</button>
+                <button
+                    class="bg-superman-yellow hover:bg-yellow-400 py-2 px-4 rounded font-bold text-gray-900 transition duration-300">Pagar
+                    Ahora</button>
+            </div>
+        </div>
+    </div>
+  
+
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+    let cart = {};
+
+    const cartBadge = document.getElementById('cart-badge');
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const cartTotalElement = document.getElementById('cart-total');
+    const openCartButton = document.getElementById('open-cart-modal');
+    const closeButton = document.getElementById('close-checkout-modal');
+    const modal = document.getElementById('checkout-modal');
+
+    // Datos de productos
+    const productData = [
+    { id: 'playera', name: 'Playera Clásica', price: 400.00, img: 'assets/img/playera_superman.jpg' },
+    { id: 'COMIC', name: 'COMIC', price: 250.00, img: 'assets/img/comic14.jpg' },
+    { id: 'VINILO', name: 'VINILO', price: 300.00, img: 'assets/img/vinilo.jpg' },
+    { id: 'sticker-simbolo', name: 'Sticker Símbolo Clásico', price: 70.00, img: 'assets/img/icono_superman.png' },
+    { id: 'sticker-SUPERMAN', name: 'StickerSUPERMAN', price: 70.00, img: 'assets/img/sticker_superman.jpg' },
+    { id: 'sticker-LEXL', name: 'StickerLEXL', price: 70.00, img: 'assets/img/sticker_lexl.jpg' },
+    { id: 'sticker-RAPTOR', name: 'StickerRAPTOR', price: 50.00, img: 'assets/img/sticker_raptor.jpg' },
+    { id: 'sticker-ULTRAMAN', name: 'StickerULTRAMAN', price: 50.00, img: 'assets/img/sticker_ultraman.jpg' }, 
+    { id: 'sticker-KRYPTO', name: 'StickerKRYPTO', price: 50.00, img: 'assets/img/sticker_krypto.jpg' },
+    { id: 'sticker-KAIJU', name: 'StickerKAIJU', price: 50.00, img: 'assets/img/sticker_kaiju.jpg' },
+    { id: 'sticker-SUPERKRYPTO', name: 'StickerSUPERKRYPTO', price: 50.00, img: 'assets/img/sticker_superkryp.jpg' },
+    { id: 'sticker-villano', name: 'StickerVILLANO', price: 80.00, img: 'assets/img/sticker_villano.jpg' }, 
+    { id: 'skin_man_of_steel', name: 'Man of Steel', price: 180.00, img: 'assets/img/skin_1.jpg' },
+    { id: 'skin_kingdom_come', name: 'Kingdom Come', price: 180.00, img: 'assets/img/skin_2.jpg' },
+    { id: 'skin_red_son', name: 'Red Son', price: 180.00, img: 'assets/img/skin_3.jpg' },
+    { id: 'skin_multiversity', name: 'Multiversity', price: 180.00, img: 'assets/img/skin_4.jpg' },
+    { id: 'skin_overman', name: 'Overman', price: 180.00, img: 'assets/img/skin_5.jpg' },
+    { id: 'skin_new_52', name: 'New 52', price: 180.00, img: 'assets/img/skin_6.jpg' },
+    { id: 'skin_black_suit', name: 'Black Suit', price: 180.00, img: 'assets/img/skin_7.jpg' },
+];
+  
+
+       function updateCartIcon() {
+        let totalItems = Object.values(cart).reduce((s, item) => s + item.qty, 0);
+        cartBadge.textContent = totalItems;
+        cartBadge.classList.toggle('hidden', totalItems === 0);
+    }
+
+    // ================================
+    //      AÑADIR AL CARRITO
+    // ================================
+    function addToCart(productId, quantity = 1, options = {}) {
+        const product = productData.find(p => p.id === productId);
+        if (!product) return;
+
+        let itemId = productId + (options.talla ? `-${options.talla}` : "");
+
+        if (!cart[itemId]) {
+            cart[itemId] = {
+                ...product,
+                qty: quantity,
+                talla: options.talla,
+                displayName: options.talla ? `${product.name} (Talla ${options.talla})` : product.name
+            };
+        } else {
+            cart[itemId].qty += quantity;
+        }
+
+        updateCartIcon();
+    }
+
+    // ================================
+    //      BORRAR ITEM
+    // ================================
+    function removeItem(itemId) {
+        delete cart[itemId];
+        renderCartItems();
+        updateCartIcon();
+    }
+
+    // ================================
+    //      CAMBIAR CANTIDAD
+    // ================================
+    function changeQty(itemId, delta) {
+        if (!cart[itemId]) return;
+
+        cart[itemId].qty += delta;
+        if (cart[itemId].qty < 1) cart[itemId].qty = 1;
+
+        renderCartItems();
+        updateCartIcon();
+    }
+
+    // ================================
+    //  RENDERIZAR EL CARRITO
+    // ================================
+    function renderCartItems() {
+        cartItemsContainer.innerHTML = "";
+        let total = 0;
+
+        if (Object.keys(cart).length === 0) {
+            cartItemsContainer.innerHTML =
+                `<p class="text-gray-400 text-center py-4">Tu carrito está vacío.</p>`;
+            cartTotalElement.textContent = "$0.00";
+            return;
+        }
+
+        for (const itemId in cart) {
+            const item = cart[itemId];
+            const isSkin = itemId.startsWith("skin_");
+            const subtotal = item.qty * item.price;
+
+            total += subtotal;
+
+            const itemHTML = `
+                <div class="flex items-center justify-between border-b border-white border-opacity-30 pb-4">
+                    <img src="${item.img}" class="w-16 h-16 object-cover rounded-md mr-4">
+
+                    <div class="flex-1">
+                        <h4 class="font-semibold">${item.displayName}</h4>
+                        <p class="text-gray-400 text-sm">$${item.price.toFixed(2)} c/u</p>
+                    </div>
+
+                    <div class="flex items-center gap-2">
+
+                        ${!isSkin ? `
+                        <button class="qty-btn bg-superman-red px-2 rounded text-white" onclick="changeQty('${itemId}', -1)">−</button>
+                        ` : ""}
+
+                        <span class="font-bold text-superman-yellow">x${item.qty}</span>
+
+                        ${!isSkin ? `
+                        <button class="qty-btn bg-superman-blue px-2 rounded text-white" onclick="changeQty('${itemId}', 1)">+</button>
+                        ` : ""}
+                    </div>
+
+                    <p class="text-white font-bold w-20 text-right">$${subtotal.toFixed(2)}</p>
+
+                    <button class="text-red-500 text-xl" onclick="removeItem('${itemId}')">🗑</button>
+                </div>
+            `;
+            cartItemsContainer.insertAdjacentHTML('beforeend', itemHTML);
+        }
+
+        cartTotalElement.textContent = `$${total.toFixed(2)}`;
+    }
+
+    // ================================
+    //      BOTONES DE AÑADIR
+    // ================================
+    const simpleButtons = document.querySelectorAll(".add-to-cart-simple");
+    simpleButtons.forEach(btn => {
+        btn.addEventListener("click", (e) => {
+            const card = e.target.closest("[data-id]");
+            const productId = card.getAttribute("data-id");
+            const qtyInput = card.querySelector(".qty-input");
+            const qty = qtyInput ? parseInt(qtyInput.value, 10) : 1;
+
+            addToCart(productId, qty);
+            renderCartItems();
+        });
+    });
+
+    // PLAYERA (con talla)
+    const playeraBtn = document.getElementById("add-playera-to-cart");
+    if (playeraBtn) {
+        playeraBtn.addEventListener("click", () => {
+            const qty = parseInt(document.getElementById("playera-qty").value, 10) || 1;
+            const talla = document.getElementById("playera-talla").value;
+
+            addToCart("playera", qty, { talla });
+            renderCartItems();
+        });
+    }
+
+    // ================================
+    //      MODAL
+    // ================================
+    function toggleModal() {
+        if (modal.classList.contains("hidden")) renderCartItems();
+        modal.classList.toggle("hidden");
+        modal.classList.toggle("flex");
+    }
+
+    openCartButton.addEventListener("click", toggleModal);
+    closeButton.addEventListener("click", toggleModal);
+
+    window.changeQty = changeQty;
+    window.removeItem = removeItem;
+
+    updateCartIcon();
+});
+</script>
+
+    </script>
+</body>
+
+</html>
